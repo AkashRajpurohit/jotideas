@@ -1,0 +1,38 @@
+{{#each ideas}}
+<div class="card card-body mb-3">
+  <h4>{{title}}</h4>
+  <p>{{details}}</p>
+  <a href="/ideas/edit/{{id}}" class="btn btn-outline-info btn-block mb-2" >Edit</a>
+  <form action="/ideas/{{id}}?_method=DELETE" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="button" value="Delete" class="btn btn-outline-danger btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Are you sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Once deleted the process cannot be reversed
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button type="submit" class="btn btn-danger">Yes,Delete It</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{{else}}
+  <div class="text-center">
+    <p class="lead">There are no Ideas</p>
+    <p>Jot down some Right Now!</p><br />
+    <a href="/ideas/add" class="btn btn-dark btn-lg">Add</a>
+  </div>
+{{/each}}
