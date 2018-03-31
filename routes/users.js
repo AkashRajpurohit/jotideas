@@ -6,7 +6,7 @@ const router = express.Router();
 const csrf = require('csurf');
 
 // CSRUF Middleware
-const csrfProtection = csrf({ cookie: false })
+const csrfProtection = csrf()
 
 router.use(csrfProtection)
 

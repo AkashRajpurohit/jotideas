@@ -2,13 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const {ensureAuthenticated} = require('../helpers/auth');
-const csrf = require('csurf');
-
-// CSRUF Middleware
-const csrfProtection = csrf({ cookie: false })
-
-router.use(csrfProtection)
-
 
 // Load Model Idea
 require('../models/Idea');
@@ -17,7 +10,7 @@ const Idea = mongoose.model('ideas');
 
 // Add Ideas Route
 router.get('/add', ensureAuthenticated, (req,res) => {
-  res.render('ideas/add',{csrfToken : req.csrfToken()});
+  res.render('ideas/add');
 });
 
 // Edit Ideas Route
@@ -31,8 +24,7 @@ router.get('/edit/:id',ensureAuthenticated, (req,res) => {
       res.redirect('/ideas');
     } else {
       res.render('ideas/edit',{
-        idea : idea,
-        csrfToken : req.csrfToken()
+        idea : idea
       });
     }
   });
@@ -44,8 +36,7 @@ router.get('/',ensureAuthenticated, (req,res) => {
     .sort({date : "desc"})
     .then(ideas => {
       res.render('ideas/index',{
-        ideas : ideas,
-        csrfToken : req.csrfToken()
+        ideas : ideas
       });
     });
 });
@@ -98,7 +89,7 @@ router.put('/:id', ensureAuthenticated, (req,res) => {
     idea.save()
     .then(idea => {
       req.flash('success_msg','Video idea updated')
-      res.redirect('/ideas',{csrfToken : req.csrfToken()});
+      res.redirect('/ideas');
     })
     .catch(err => {
       console.log(err);
@@ -112,7 +103,7 @@ router.delete('/:id', ensureAuthenticated, (req,res) => {
   Idea.remove({ _id : req.params.id })
     .then(() => {
       req.flash('success_msg','Video idea is removed')
-      res.redirect('/ideas',{csrfToken : req.csrfToken()})
+      res.redirect('/ideas')
     })
     .catch(err => {
       console.log(err);
