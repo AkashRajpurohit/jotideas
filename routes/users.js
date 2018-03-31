@@ -3,18 +3,19 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const router = express.Router();
+const {csrfProtection,parseForm} = require('../helpers/csrf');
 
 // Load User Model
 require('../models/User');
 const User = mongoose.model('user')
 
 // Login User Route
-router.get('/login',(req,res) => {
-  res.render('users/login');
+router.get('/login',csrfProtection,(req,res) => {
+  res.render('users/login',{ csrfToken: req.csrfToken() });
 });
 
 // Login Form POST
-router.post('/login',(req,res,next) => {
+router.post('/login', parseForm, csrfProtection,(req,res,next) => {
   passport.authenticate('local',{
     successRedirect : '/ideas',
     failureRedirect : '/users/login',
@@ -25,12 +26,12 @@ router.post('/login',(req,res,next) => {
 ///////////////////////////////////////////////////////////////
 
 // Register User Route
-router.get('/register',(req,res) => {
-  res.render('users/register');
+router.get('/register',csrfProtection,(req,res) => {
+  res.render('users/register',{ csrfToken: req.csrfToken() });
 });
 
 // Register Form POST
-router.post('/register',(req,res) => {
+router.post('/register', parseForm, csrfProtection,(req,res) => {
   let errors = [];
 
   if(req.body.password !== req.body.password2) {

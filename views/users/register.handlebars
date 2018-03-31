@@ -3,6 +3,7 @@
     <div class="card card-body">
       <h3 class="text-center">Account Register</h3>
       <form method="POST" action="/users/register">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" name="name" value="{{name}}" class="form-control" required>
