@@ -4,6 +4,7 @@
   <p>{{details}}</p>
   <a href="/ideas/edit/{{id}}" class="btn btn-outline-info btn-block mb-2" >Edit</a>
   <form action="/ideas/{{id}}?_method=DELETE" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <input type="hidden" name="_method" value="DELETE">
     <input type="button" value="Delete" class="btn btn-outline-danger btn-block" data-toggle="modal" data-target="#exampleModalCenter">
     <!-- Modal -->
