@@ -2,10 +2,10 @@
 <div class="card card-body mb-3">
   <h4>{{title}}</h4>
   <p>{{details}}</p>
-  <a href="/ideas/edit/{{id}}" class="btn btn-outline-info btn-block mb-2" >Edit</a>
+  <a href="/ideas/edit/{{id}}" class="btn btn-info btn-block mb-2" >Edit</a>
   <form action="/ideas/{{id}}?_method=DELETE" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="button" value="Delete" class="btn btn-outline-danger btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+    <input type="button" value="Delete" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModalCenter">
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -33,6 +33,6 @@
   <div class="text-center">
     <p class="lead">There are no Ideas</p>
     <p>Jot down some Right Now!</p><br />
-    <a href="/ideas/add" class="btn btn-dark btn-lg">Add</a>
+    <a href="/ideas/add" class="btn btn-success btn-lg">Add</a>
   </div>
 {{/each}}

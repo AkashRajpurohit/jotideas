@@ -25,7 +25,7 @@
 .error-container > span:nth-of-type(1) > span {
   transform-origin: 50% 100% 0px;
   transform: rotateX(0);
-  animation: easyoutelastic 8s infinite;
+  animation: easyoutelastic 5s infinite;
 }
 
 .error-container > span:nth-of-type(3) {
@@ -36,7 +36,7 @@
 .error-container > span:nth-of-type(3) > span {
   transform-origin: 100% 100% 0px;
   transform: rotate(0deg);
-  animation: rotatedrop 8s infinite;
+  animation: rotatedrop 5s infinite;
 }
 @keyframes easyoutelastic {
   0% {

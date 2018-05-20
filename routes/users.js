@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+const crypto = require("crypto");
 const router = express.Router();
 
 const emailauth = require("../config/sendEmail");
@@ -63,7 +64,7 @@ router.post("/requestActivation", (req, res) => {
         res.redirect("/users/register");
       } else {
         // Activation token
-        const token = (Math.random() + 1).toString(36).substr(2, 10);
+        const token = crypto.randomBytes(20).toString('hex');
         newUser = new User({
           name: req.body.name,
           email: req.body.email,
