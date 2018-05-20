@@ -78,9 +78,11 @@ router.post("/requestActivation", (req, res) => {
               .save()
               .then(user => {
                 emailauth.sendEmail(req.body.name, req.body.email, token, url);
-                res.render("users/activation", {
-                  email: req.body.email
-                });
+                req.flash(
+                  "success_msg",
+                  `Check ${req.body.email} to Confirm the Account!`
+                );
+                res.redirect("/users/login");
               })
               .catch(err => {
                 console.log(err);
