@@ -40,7 +40,7 @@ router.get("/register", (req, res) => {
 });
 
 // Register Form POST
-router.post("/requestActivation", ensureAuthenticated, (req, res) => {
+router.post("/requestActivation", (req, res) => {
   let errors = [];
 
   if (req.body.password !== req.body.password2) {
