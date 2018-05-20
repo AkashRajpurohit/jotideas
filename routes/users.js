@@ -94,7 +94,7 @@ router.post("/requestActivation", (req, res) => {
 });
 
 // Activate Account
-router.get("/activateaccount/:token", ensureAuthenticated, (req, res) => {
+router.get("/activateaccount/:token", (req, res) => {
   User.findOne({ token: req.params.token }).then(user => {
     if (!user) {
       req.flash("error_msg", "Doesn't look like a valid link");
