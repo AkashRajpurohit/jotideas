@@ -2,8 +2,7 @@
   <div class="col-md-6 mx-auto">
     <div class="card card-body">
       <h3 class="text-center">Account Login</h3>
-      <form method="POST" action="/users/login" >
-      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      <form method="POST" action="/users/login">
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" name="email" class="form-control" required>
@@ -12,8 +11,8 @@
           <label for="email">Password</label>
           <input type="password" name="password" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary" >Login</button>
-        <a href="/users/register" class="btn btn-secondary" >Register</a>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="/users/register" class="btn btn-secondary">Register</a>
       </form>
     </div>
   </div>

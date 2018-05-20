@@ -1,9 +1,11 @@
-if(process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === "production") {
   module.exports = {
-    mongoURI : 'mongodb://akash:akash123@ds227939.mlab.com:27939/vidjot-app'
-  } 
+    mongoURI: process.env.REMOTE_MONGO,
+    environment: "Production"
+  };
 } else {
   module.exports = {
-    mongoURI : 'mongodb://localhost/vidjot-dev'
-  }
+    mongoURI: "mongodb://localhost/vidjot-dev",
+    environment: "Development"
+  };
 }

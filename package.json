@@ -1,10 +1,11 @@
 {
-  "name": "vidjot",
+  "name": "JotIdeas",
   "version": "1.0.0",
-  "description": "Learning MEAN Stack",
+  "description": "Fun app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "Akash Rajpurohit",
   "license": "MIT",
@@ -13,11 +14,13 @@
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
     "csurf": "^1.9.0",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "method-override": "^2.3.10",
     "mongoose": "^5.0.11",
+    "nodemailer": "^4.6.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   }
