@@ -91,6 +91,11 @@ app.use("/users", users);
 
 //////////////////////////////////////////////////
 
+// If not a valid Route then route to 404
+app.get('*', function(req, res){
+  res.status(404).render('404');
+});
+
 app.listen(port, () => {
   console.log(`Server Started at Port ${port}`);
 });

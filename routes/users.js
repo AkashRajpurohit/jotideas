@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const router = express.Router();
-const { ensureAuthenticated } = require("../helpers/auth");
 
 const emailauth = require("../config/sendEmail");
 
