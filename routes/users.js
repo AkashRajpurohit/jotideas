@@ -20,6 +20,7 @@ const User = mongoose.model("user");
 
 // Login User Route
 router.get("/login", (req, res) => {
+	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   res.render("users/login");
 });
 
@@ -36,6 +37,7 @@ router.post("/login", (req, res, next) => {
 
 // Register User Route
 router.get("/register", (req, res) => {
+	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   res.render("users/register");
 });
 
