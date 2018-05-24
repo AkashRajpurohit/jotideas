@@ -77,6 +77,7 @@ app.use((req, res, next) => {
 
 // Index Route
 app.get("/", (req, res) => {
+	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   res.render("index");
 });
 
@@ -93,6 +94,7 @@ app.use("/users", users);
 
 // If not a valid Route then route to 404
 app.get('*', function(req, res){
+	res.set('Cache-Control', 'public, max-age=600, s-maxage=1000');
   res.status(404).render('404');
 });
 
