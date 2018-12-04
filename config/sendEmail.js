@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const smtpTransport = require("nodemailer-smtp-transport");
 
 exports.sendEmail = function(name, email, token, url) {
   const output = `
@@ -215,21 +216,22 @@ exports.sendEmail = function(name, email, token, url) {
   `;
 
   // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "smtpout.asia.secureserver.net",
-    port: 3535,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: process.env.EMAIL, // generated ethereal user
-      pass: process.env.PASSWORD // generated ethereal password
-    }
-  });
+  let transporter = nodemailer.createTransport(
+    smtpTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
+      }
+    })
+  );
 
   // setup email data with unicode symbols
   let mailOptions = {
-    from: '"JotIdeas" <akashrajpurohit@codewithitguy.com>', // sender address
+    from: '"JotIdeas" <noreply.akashrajpurohit@gmail.com>', // sender address
     to: email, // list of receivers
-    subject: "Confirm Your Account", // Subject line
+    subject: "Confirm your account!", // Subject line
     html: output // html body
   };
 

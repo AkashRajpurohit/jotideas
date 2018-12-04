@@ -13,12 +13,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // DB Config
-const db = require("./config/database");
+const keys = require("./config/keys");
 
 // Connect to MongoDB
 mongoose
-  .connect(db.mongoURI)
-  .then(() => console.log(`MongoDB Running at ${db.environment} Environment..`))
+  .connect(keys.mongoURI)
+  .then(() => console.log(`MongoDB Running at ${keys.environment} Environment..`))
   .catch(err => console.log(err));
 
 // Load Routes
@@ -49,7 +49,7 @@ app.use(methodOverride("_method"));
 // Express-Session Middleware
 app.use(
   session({
-    secret: process.env.SECRETORKEY,
+    secret: keys.secretOrKey,
     resave: false,
     saveUninitialized: false
   })
