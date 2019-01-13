@@ -18,7 +18,7 @@ const keys = require("./config/keys");
 // Connect to MongoDB
 mongoose
   .connect(keys.mongoURI)
-  .then(() => console.log(`MongoDB Running at ${keys.environment} Environment..`))
+  .then(() => console.log(`MongoDB Running...`))
   .catch(err => console.log(err));
 
 // Load Routes
@@ -77,13 +77,13 @@ app.use((req, res, next) => {
 
 // Index Route
 app.get("/", (req, res) => {
-	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   res.render("index");
 });
 
 // About Route
 app.get("/about", (req, res) => {
-	res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   res.render("about");
 });
 
@@ -94,8 +94,8 @@ app.use("/users", users);
 //////////////////////////////////////////////////
 
 // If not a valid Route then route to 404
-app.get('*', function(req, res){
-  res.status(404).render('404');
+app.get("*", function(req, res) {
+  res.status(404).render("404");
 });
 
 app.listen(port, () => {
