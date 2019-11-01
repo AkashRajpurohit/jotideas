@@ -19,7 +19,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "method-override": "^2.3.10",
-    "mongoose": "^5.0.11",
+    "mongoose": "^5.7.5",
     "nodemailer": "^4.6.4",
     "nodemailer-smtp-transport": "^2.7.4",
     "passport": "^0.4.0",
